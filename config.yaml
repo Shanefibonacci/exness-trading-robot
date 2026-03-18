@@ -1,0 +1,69 @@
+# Exness Trading Robot Configuration
+
+# Trading Symbols
+trading:
+  symbols:
+    - EURUSD
+    - GBPUSD
+    - USDJPY
+  timeframe: "1H"  # 1M, 5M, 15M, 1H, 4H, 1D
+  max_concurrent_trades: 3
+
+# Moving Average Strategy
+moving_average:
+  enabled: true
+  fast_period: 10
+  slow_period: 50
+  signal_period: 5
+
+# Oscillators
+oscillators:
+  rsi:
+    enabled: true
+    period: 14
+    overbought: 70
+    oversold: 30
+  
+  macd:
+    enabled: true
+    fast: 12
+    slow: 26
+    signal: 9
+  
+  stochastic:
+    enabled: true
+    k_period: 14
+    d_period: 3
+    smoothing: 3
+    overbought: 80
+    oversold: 20
+
+# Risk Management
+risk_management:
+  position_size_percent: 2.0  # % of account per trade
+  stop_loss_percent: 2.0      # % below entry price
+  take_profit_percent: 4.0    # % above entry price
+  max_daily_loss_percent: 5.0 # Max loss per day
+  trailing_stop: true
+  trailing_stop_percent: 1.5
+
+# API Settings
+api:
+  base_url: "https://api.exness.com/v1"
+  timeout: 30
+  max_retries: 3
+  retry_delay: 5
+
+# Backtesting
+backtest:
+  start_date: "2024-01-01"
+  end_date: "2024-12-31"
+  initial_balance: 10000
+  leverage: 1
+
+# Logging
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  file: "logs/trading_bot.log"
+  max_file_size: 10485760  # 10MB
+  backup_count: 5
